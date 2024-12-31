@@ -20,6 +20,6 @@
     "noEmit": false,
     "lib": ["es2022", "dom", "dom.iterable"]
   },
-  "include": ["server.ts"],
+  "include": ["server.ts", "src/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }
