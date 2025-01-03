@@ -36,5 +36,17 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Hello, ESM world!');
 });
 
+// Database status endpoint
+app.get('/db-status', async (req: Request, res: Response) => {
+  try {
+      await db.sequelize.authenticate();
+      res.status(200).json({ status: 'Database is connected' });
+  } catch (error) {
+      console.error('Database connection error:', error);
+      res.status(500).json({ status: 'Database connection failed', error: (error as Error).message });
+  }
+});
+
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

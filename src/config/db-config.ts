@@ -1,3 +1,5 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 interface PoolConfig {
     max: number;
@@ -34,13 +36,13 @@ interface PoolConfig {
     };
   
     const dbPassword = process.env.DB_PASSWORD || 'password';
-    //console.log('this is the db password from dbconfig: ' + dbPassword);
+    console.log('this is the db password from dbconfig: ' + dbPassword);
   
     return {
       database: 'grid_be_db',
       user:  'addlatt',
       password: dbPassword,
-      host:  'localhost',
+      host: process.env.DB_HOST || 'host.docker.internal',
       port: 5432,
       pool: {
         max:  5,
